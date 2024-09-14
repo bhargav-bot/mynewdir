@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head ln="en">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            div {
+                width: 20px;
+                height: 20px;
+
+                border-radius: 50%;
+                left: 100px;
+                top: 100px;
+                position: absolute;
+                animation: moveleft 12s  3;
+                background-color: blue;
+
+               
+              
+            }
+            @keyframes moveleft {
+                
+                    0% { 
+                        left: 100px;
+                    }
+                    100% { 
+                    scale: 5.1;
+                    background-color: red;
+                    border: 2px solid black;
+
+                    transform: translate3d(180px,50px,0);
+
+                    }
+
+
+                    
+                }
+            div:hover{
+               
+                animation: moveleft 5s ease-in-out ;
+                background-color: blue;
+            }
+        </style>
+        </head>
+    <body>
+        <div></div>
+        </body>
+</html>

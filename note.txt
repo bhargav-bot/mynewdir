@@ -1,0 +1,57 @@
+mongodb+srv://760041bp:Yesha14@cluster0.g5vqr.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+
+
+from pymongo.mongo_client import MongoClient
+from pymongo.server_api import ServerApi
+
+uri = "mongodb+srv://760041bp:Yesha14@cluster0.g5vqr.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+
+# Create a new client and connect to the server
+client = MongoClient(uri, server_api=ServerApi('1'))
+
+# Send a ping to confirm a successful connection
+try:
+    client.admin.command('ping')
+    print("Pinged your deployment. You successfully connected to MongoDB!")
+except Exception as e:
+    print(e)
+
+
+
+
+[{
+
+  "name": "John Doe",
+  "email": "john.doe@example.com",
+  "age": 28,
+  "address": {
+    "street": "123 Elm St",
+    "city": "New York",
+    "state": "NY",
+    "zipcode": "10001"
+  }
+},{
+
+  "name": "John Doe",
+  "email": "john.doe@example.com",
+  "age": 28,
+  "address": {
+    "street": "123 Elm St",
+    "city": "New York",
+    "state": "NY",
+    "zipcode": "10001"
+  }
+}]
+
+[
+  {
+    "name": "Item1",
+    "description": "This is the first item",
+    "price": 10.99
+  },
+  {
+    "name": "Item2",
+    "description": "This is the second item",
+    "price": 15.49
+  }
+]

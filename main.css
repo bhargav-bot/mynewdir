@@ -1,0 +1,7 @@
+.container.active{
+    transform: scale(1.5);
+}
+.cat.active{
+    transform: scale(1.5);
+
+}

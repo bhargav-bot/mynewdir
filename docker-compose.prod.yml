@@ -1,0 +1,31 @@
+version: "3.8"
+
+services:
+
+
+  postgres:
+    image: postgres
+    restart: always
+    environment:
+     - POSTGRES_USER=bhargav
+     - POSTGRES_PASSWORD=Yesha14
+     - POSTGRES_DB=fastapi_db
+    ports:
+     - "5432:5432"
+    volumes:
+      - ./init:/docker-entrypoint-initdb.d
+
+  fastapi-app:
+    build: .
+    ports:
+      - "80:8012"
+      - "443:8008"
+    volumes:
+      - .:/app
+    depends_on:
+      - postgres
+
+
+    
+    
+

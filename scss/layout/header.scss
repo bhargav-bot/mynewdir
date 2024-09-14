@@ -1,0 +1,295 @@
+@mixin boilermediamax($breakpoint){
+    @media (max-width: $breakpoint) {
+        @content;
+    }
+}
+
+body{
+  
+   @media (min-width: 195px) {
+    background-color: blue;
+    text-align: center;
+   }
+   @include boilermediamax(194px) {
+    background-color: green;
+    font-size: 10px;
+   }
+}
+
+.father{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    width: 600px;
+    background-color:yellow;
+    flex-direction: column;
+    margin: 0 auto 0 auto;
+    
+}
+.father p{
+    color: rgb(186, 34, 60);
+    font-size: 20px;
+}
+.father >p{
+    font-weight: bolder;
+    font-style: italic;
+}
+
+.hi +p{
+    color: red;
+}
+
+.hi ~p{
+    color: rgba(209, 226, 99, 0.792);
+}
+
+.hi + p + p{
+    color:brown;
+}
+.container{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    align-items: center;
+    height: auto;
+    width: 600px;
+    background-color: gray;
+    margin: 0 auto 0 auto;
+    caret-color:grey;
+
+    cursor:progress;
+}
+.container:hover ~ .father{
+    background-color: rgb(33, 218, 107);
+    color: white;
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+.menu:hover ul li:nth-child(2n) { 
+    color: gold; 
+}
+
+.menu ul li:nth-child(2n) {
+    color: rgb(189, 28, 28);
+    font-style: italic;
+    font-weight: bolder;
+    transition: color 0.5s ease;
+}
+.outer{
+
+    width: 60px;
+    height: 30px;
+    background-color: darkgray;
+    margin: 10px;
+    border-radius: 15px;
+    overflow: hidden;
+    display: inline-block;
+
+    position: relative;
+}
+.outer .inner{
+    width: 20px;
+    height: 20px;
+    background-color:red;
+    position: absolute;
+
+    top: 5px;
+    left: 5px;
+    border-radius: 50%;
+    transition: left 0.5s ease;
+    display: inline;
+    
+    z-index: 2;
+    pointer-events: none;
+
+}
+.outer input{
+ opacity: 0;
+
+height: 20px;
+width: 20px;
+
+
+
+}
+
+.outer #password:checked ~ .inner{
+    left: calc(100% - 25px);
+}
+
+#hi12{
+    width: 200px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin: 0 auto 0 auto;
+    position: relative;
+    caret-color: transparent;
+
+}
+.outer label{
+    margin: 0;
+    padding: 0;
+}
+
+$colors:(primary:rgb(168, 84, 32),secondary:green,tertiary:red,quaternary:rgb(7, 7, 24));
+@each $name,$color in $colors{
+    .#{$name}{
+        color: $color;
+
+    }
+}
+@for $i from 1 through 6{
+    .m-#{$i}{
+        font-size:#{$i*10}px;
+
+        
+    }
+
+}
+$j:1;
+@while ($j <= 6 ){
+    .m-#{$j}{
+        border:#{$j}px solid black;
+
+        
+    }
+    $j:$j+1;
+}
+
+
+@function square($number){
+    
+    @return $number * $number;
+
+}
+
+.square{
+    width:square(10)*1px;
+    height:square(10)+px;
+    background:linear-gradient(blue,green,gold);
+    border-radius: 50%;
+    margin: 0 auto;
+    align-content: center;
+}
+  
+%rules{
+    color: blue;
+    font-size: 16px;
+    border: 1px solid black;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.5s ease, color 0.5s ease;
+    &:hover{
+        background-color: lightgray;
+        color: white;
+    }
+    &:focus{
+        outline: none;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        color: goldenrod;
+    }
+
+}
+
+.rule1{
+    @extend %rules;
+    background-color: red;
+}
+%box{
+    width: 200px;
+    height: 200px;
+
+    border-radius: 5px;
+    display: inline-block;
+    margin: 10px;
+   
+}
+
+.box{
+    @extend %box;
+    background-color:lighten($color: red, $amount: 20%)
+}
+.box1{
+    @extend %box;
+    background-color: darken($color: red, $amount: 20%)
+}
+.box2{
+    @extend %box;
+    background-color: red;
+}
+.box3{
+    @extend %box;
+    background-color: yellow;
+}
+.box4{
+    @extend %box;
+    background-color:adjust-hue($color:yellow, $degrees: 25deg);
+}
+.box5{
+    @extend %box;
+    background-color: adjust-hue($color: yellow, $degrees: -25deg);
+}
+.box6{
+    @extend %box;
+    background-color: pink;
+}
+.box7{
+    @extend %box;
+    background-color: saturate($color: pink, $amount: 100%)
+}
+.box8{
+    @extend %box;
+    background-color: desaturate($color: pink, $amount: 100%)
+}
+.box9{
+    @extend %box;
+    background-color: green;
+}
+.box10{
+    @extend %box;
+    background-color: rgba( green, 0.2);
+}
+.box11{
+    @extend %box;
+    background-color: rgba( green,  0.8);
+}
+.box12{
+    @extend %box;
+    background-color:brown;
+}
+
+.box13{
+    @extend %box;
+    background-color: mix( green, yellow, 50%);
+}
+.box14{
+    @extend %box;
+    background-color: mix( green, yellow, 10%);
+}
+$base-size: 16px;
+$ratio: 1.5;
+@function module-scale12($steps){
+    @return $base-size * pow($ratio, $steps);
+}
+h1{
+    font-size: module-scale12(1);
+}
+h2{
+    font-size: module-scale12(2);
+}
+h3{
+    font-size: module-scale12(3);
+}
+h4{
+    font-size: module-scale12(4);
+}
+body{
+    caret-color: transparent;
+}
+@debug module-scale12(2);

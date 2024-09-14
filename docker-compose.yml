@@ -1,0 +1,22 @@
+version: "3.8"
+services:
+  fastapi-app:
+    image: my-gulp-project-fastapi-app:latest
+    ports:
+      - "8008:8008"
+      - "443:8443"
+    depends_on:
+      - postgres
+
+
+  postgres:
+    image: postgres:13-alpine
+    restart: always
+    environment:
+     - POSTGRES_USER=postgres
+     - POSTGRES_PASSWORD=postgres
+     - POSTGRES_DB=fastapi_db
+
+
+
+

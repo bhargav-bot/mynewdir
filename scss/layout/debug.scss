@@ -1,0 +1,200 @@
+@use 'header' as *;
+
+@debug $base-size; 
+@debug $ratio;
+@warn "you are gonna see module";
+@debug module-scale12(2);
+
+
+$a: 10;
+$b: 12;
+
+@if $a>$b{
+    @debug "a is greater than b";
+}
+@else{
+    @debug "a is less than b";
+}
+@if $a==$b{
+    @error "a and b should not be equal"
+}
+
+$k:1;
+@for $k from 1 through 10{
+    @keyframes balljump-#{$k}{
+        0% {
+            transform: translate3d($k*10px, 0, 0);
+            opacity: 0.5;
+        }
+        50% {
+            transform: translate3d($k*20px, -200px, 0);
+            opacity: 1;
+        }
+        75%{
+            opacity: 0.5;
+        }
+        100% {
+            transform: translate3d($k*10px, 0, 0);
+            opacity: 0;
+        }
+    }
+}
+
+.ball {
+    width: 50px;
+    height: 50px;
+    background-color: rgb(17, 17, 20);
+    border-radius: 50%;
+    animation: balljump-1 2s ease-in-out infinite;
+}
+.ball1 {
+    width: 50px;
+    height: 50px;
+    background-color: rgb(17, 17, 20);
+    border-radius: 50%;
+    animation: balljump-2 2s ease-in-out infinite;
+}
+.ball2 {
+    width: 50px;
+    height: 50px;
+    background-color: rgb(17, 17, 20);
+    border-radius: 50%;
+    animation: balljump-3 2s ease-in-out infinite;
+}
+.ball3 {
+    width: 50px;
+    height: 50px;
+    background-color: rgb(17, 17, 20);
+    border-radius: 50%;
+    animation: balljump-4 2s ease-in-out infinite;
+}
+.ball4 {
+    width: 50px;
+    height: 50px;
+    background-color: rgb(17, 17, 20);
+    border-radius: 50%;
+    animation: balljump-5 2s ease-in-out infinite;
+}
+.ball5 {
+    width: 50px;
+    height: 50px;
+    background-color: rgb(17, 17, 20);
+    border-radius: 50%;
+    animation: balljump-6 2s ease-in-out infinite;
+}
+.ball6 {
+    width: 50px;
+    height: 50px;
+    background-color: rgb(17, 17, 20);
+    border-radius: 50%;
+    animation: balljump-7 2s ease-in-out infinite;
+}
+.ball7 {
+    width: 50px;
+    height: 50px;
+    background-color: rgb(17, 17, 20);
+    border-radius: 50%;
+    animation: balljump-8 2s ease-in-out infinite;
+}
+.ball8{
+    width: 50px;
+    height: 50px;
+    background-color: rgb(17, 17, 20);
+    border-radius: 50%;
+    animation: balljump-91 12s ease-in-out infinite;
+}
+@keyframes balljump-91 {
+    0% {
+        transform: translate3d(10px, 0, 0);
+        opacity: 0.5;
+    }
+
+    10%{
+        transform: translate3d(50px, -200px, 0);
+        opacity: 1;
+    }
+20%{
+    opacity: 0.5;
+    transform: translate3d(150px, 0, 0);
+}
+30%{
+    transform: translate3d(200px, -200px, 0);
+    opacity: 1;
+}
+40%{
+    opacity: 0.5;
+    transform: translate3d(250px, 0, 0);
+
+}
+50%{
+    transform: translate3d(300px, -200px, 0);
+    opacity: 1;
+}
+60%{
+    opacity: 0.5;
+    transform: translate3d(350px, 0, 0);
+}
+70%{
+    transform: translate3d(400px, -200px, 0);
+    opacity: 1;
+}
+
+80%{
+    opacity: 0.5;
+    transform: translate3d(450px, 0, 0);
+}
+
+90%{
+    transform: translate3d(500px, -200px, 0);
+    opacity: 1;
+}
+100%{
+    transform: translate3d(550px, 0, 0);
+    opacity: 0;
+}
+    }
+@mixin fade-in($duration:1s,$timing-function:ease-in-out,$delay:0s){
+    transition: opacity $duration $timing-function $delay;
+    opacity: 0;
+    &:hover{
+        opacity: 1;
+        font-size: larger;
+    }
+}
+.fade-in{
+    @include fade-in;
+}
+@mixin rotation($duration:2s,$timing-function:ease-in-out,$iteration-count:infinite){
+    @keyframes rotation {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+        
+    }
+    
+
+    &:hover{
+        animation: rotation $duration $timing-function $iteration-count;
+
+    }}
+    %feature{
+        background-color: red;
+        padding: 20px;
+        color: white;
+        border-radius: 10px;
+        margin: 10px;
+        width: 100px;
+        text-align: center;
+        display: inline-block;
+        cursor: pointer;
+    
+    }
+
+.rotate{
+    @include rotation;
+    @extend %feature;
+    
+}
